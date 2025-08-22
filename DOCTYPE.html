@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación Especial</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+      text-align: center;
+      background: url('https://images.unsplash.com/photo-1607083205158-86bbce1e90f8') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      backdrop-filter: brightness(0.5);
+    }
+    .card {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 400px;
+      width: 90%;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      background: #ff7f50;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #ff5722;
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>¡Estás Invitado!</h1>
+    <p><strong>Evento:</strong> Cumpleaños de Ana</p>
+    <p><strong>Fecha:</strong> 10 de Septiembre, 7:00 PM</p>
+    <p><strong>Lugar:</strong> Salón Jardín Real</p>
+    
+    <h3>Confirma tu asistencia:</h3>
+    <input type="text" id="nombre" placeholder="Tu nombre" required>
+    <input type="number" id="acompanantes" placeholder="N° de acompañantes" min="0">
+    <button onclick="enviarWhatsApp()">Confirmar por WhatsApp</button>
+  </div>
+
+  <!-- Música de fondo -->
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    function enviarWhatsApp() {
+      let nombre = document.getElementById("nombre").value;
+      let acompanantes = document.getElementById("acompanantes").value;
+      let numero = "5215551234567"; // 🔴 Cambia este número por tu WhatsApp con LADA (ej: +5215551234567)
+      let mensaje = `Hola, soy ${nombre}. Confirmo mi asistencia con ${acompanantes || 0} acompañantes.`;
+      let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>
